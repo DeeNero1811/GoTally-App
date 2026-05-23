@@ -11,7 +11,10 @@ const withPWA =
 
     disable:
       process.env.NODE_ENV ===
-      "development",
+        "development" ||
+
+      process.env.VERCEL ===
+        "1",
   })
 
 const nextConfig = {

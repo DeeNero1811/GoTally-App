@@ -1,46 +1,13 @@
-import type {
-  Metadata,
-  Viewport,
-} from "next"
+import type { Metadata } from "next"
 
 import "./globals.css"
 
-import {
-  ThemeProvider,
-} from "@/components/providers/ThemeProvider"
+import Providers from "./providers"
 
-import ReminderProvider
-  from "@/components/providers/ReminderProvider"
-  import NotificationProvider
-  from "@/components/providers/NotificationProvider"
-  
-
-export const metadata:
-  Metadata = {
-
-  title: "GoTasklly",
-
+export const metadata: Metadata = {
+  title: "GoTaskly",
   description:
-    "AI-powered productivity platform",
-
-  manifest:
-    "/manifest.json",
-
-  icons: {
-
-    icon:
-      "/icons/icon-192.png",
-
-    apple:
-      "/icons/icon-192.png",
-  },
-}
-
-export const viewport:
-  Viewport = {
-
-  themeColor:
-    "#4f46e5",
+    "AI Productivity Platform",
 }
 
 export default function RootLayout({
@@ -51,22 +18,15 @@ export default function RootLayout({
 
   return (
 
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
+    <html lang="en">
 
       <body>
 
-      <ThemeProvider>
+        <Providers>
 
-  <NotificationProvider />
+          {children}
 
-  <ReminderProvider />
-
-  {children}
-
-</ThemeProvider>
+        </Providers>
 
       </body>
 
