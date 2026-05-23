@@ -1,26 +1,470 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   ROOT COLORS
+========================= */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  --background:
+    #f8fafc;
+
+  --foreground:
+    #0f172a;
+
+  --card:
+    rgba(255,255,255,0.72);
+
+  --border:
+    rgba(255,255,255,0.18);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+
+  --background:
+    #020617;
+
+  --foreground:
+    #ffffff;
+
+  --card:
+    rgba(17,24,39,0.72);
+
+  --border:
+    rgba(255,255,255,0.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================
+   GLOBAL HTML
+========================= */
+
+html {
+
+  scroll-behavior:
+    smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  background:
+    var(--background);
+
+  color:
+    var(--foreground);
+
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
+
+  overflow-x:
+    hidden;
+
+  text-rendering:
+    optimizeLegibility;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  -moz-osx-font-smoothing:
+    grayscale;
+}
+
+/* =========================
+   PREMIUM TYPOGRAPHY
+========================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+  letter-spacing:
+    -0.045em;
+
+  line-height:
+    0.95;
+
+  text-wrap:
+    balance;
+}
+
+h1 {
+
+  font-weight:
+    900;
+}
+
+h2 {
+
+  font-weight:
+    800;
+}
+
+h3 {
+
+  font-weight:
+    700;
+}
+
+p {
+
+  line-height:
+    1.75;
+}
+
+/* =========================
+   PREMIUM LINKS
+========================= */
+
+a {
+
+  transition:
+    all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================
+   PREMIUM BUTTON FEEL
+========================= */
+
+button {
+
+  transition:
+    all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+
+  transform:
+    translateY(-1px);
+}
+
+/* =========================
+   PREMIUM SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+
+  width:
+    10px;
+
+  height:
+    10px;
+}
+
+::-webkit-scrollbar-track {
+
+  background:
+    transparent;
+}
+
+::-webkit-scrollbar-thumb {
+
+  background:
+    rgba(99, 102, 241, 0.35);
+
+  border-radius:
+    999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background:
+    rgba(99, 102, 241, 0.5);
+}
+
+/* =========================
+   PREMIUM SELECTION
+========================= */
+
+::selection {
+
+  background:
+    rgba(99, 102, 241, 0.22);
+}
+
+/* =========================
+   GLASS SYSTEM
+========================= */
+
+.glass {
+
+  background:
+    rgba(255,255,255,0.7);
+
+  backdrop-filter:
+    blur(24px);
+
+  -webkit-backdrop-filter:
+    blur(24px);
+
+  border:
+    1px solid rgba(255,255,255,0.2);
+
+  box-shadow:
+    0 10px 40px rgba(15,23,42,0.06);
+}
+
+.dark .glass {
+
+  background:
+    rgba(15,23,42,0.65);
+
+  border:
+    1px solid rgba(255,255,255,0.05);
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   PREMIUM CARD SYSTEM
+========================= */
+
+.premium-card {
+
+  background:
+    var(--card);
+
+  backdrop-filter:
+    blur(24px);
+
+  -webkit-backdrop-filter:
+    blur(24px);
+
+  border:
+    1px solid var(--border);
+
+  box-shadow:
+    0 10px 40px rgba(15,23,42,0.06);
+}
+
+/* =========================
+   SOFT HOVER SYSTEM
+========================= */
+
+.hover-lift {
+
+  transition:
+    transform 250ms cubic-bezier(0.4,0,0.2,1),
+    box-shadow 250ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.hover-lift:hover {
+
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 20px 50px rgba(15,23,42,0.12);
+}
+
+/* =========================
+   PREMIUM INPUTS
+========================= */
+
+input,
+textarea,
+select {
+
+  transition:
+    all 250ms cubic-bezier(0.4,0,0.2,1);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+
+  outline:
+    none;
+
+  box-shadow:
+    0 0 0 4px rgba(99,102,241,0.12);
+}
+
+/* =========================
+   PREMIUM BLUR ORBS
+========================= */
+
+.blur-orb {
+
+  position:
+    absolute;
+
+  border-radius:
+    999px;
+
+  filter:
+    blur(100px);
+
+  opacity:
+    0.4;
+
+  pointer-events:
+    none;
+}
+
+/* =========================
+   PREMIUM ANIMATIONS
+========================= */
+
+@keyframes float {
+
+  0% {
+
+    transform:
+      translateY(0px);
+  }
+
+  50% {
+
+    transform:
+      translateY(-10px);
+  }
+
+  100% {
+
+    transform:
+      translateY(0px);
+  }
+}
+
+.float {
+
+  animation:
+    float 6s ease-in-out infinite;
+}
+
+/* =========================
+   PREMIUM FADE
+========================= */
+
+.fade-edge {
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+}
+
+/* =========================
+    SECTION SPACING
+========================= */
+
+.section-spacing {
+
+  padding-top:
+    7rem;
+
+  padding-bottom:
+    7rem;
+}
+
+/* =========================
+   PREMIUM SHIMMER
+========================= */
+
+.shimmer {
+
+  position:
+    relative;
+
+  overflow:
+    hidden;
+}
+
+.shimmer::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  transform:
+    translateX(-100%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.35),
+      transparent
+    );
+
+  animation:
+    shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+
+  100% {
+
+    transform:
+      translateX(100%);
+  }
+}
+
+/* =========================
+   HEATMAP SYSTEM
+========================= */
+
+.react-calendar-heatmap {
+  width: 100%;
+}
+
+.react-calendar-heatmap svg {
+  width: 100%;
+  height: 160px;
+}
+
+.react-calendar-heatmap text {
+  fill: #94a3b8;
+  font-size: 10px;
+}
+
+.react-calendar-heatmap rect {
+  rx: 4px;
+  ry: 4px;
+  stroke-width: 2px;
+}
+
+.react-calendar-heatmap .color-empty {
+  fill: #e2e8f0;
+}
+
+.dark .react-calendar-heatmap .color-empty {
+  fill: #1e293b;
+}
+
+.react-calendar-heatmap .color-github-1 {
+  fill: #4338ca;
+}
+
+.react-calendar-heatmap .color-github-2 {
+  fill: #6366f1;
+}
+
+.react-calendar-heatmap .color-github-3 {
+  fill: #8b5cf6;
+}
+
+.react-calendar-heatmap .color-github-4 {
+  fill: #c084fc;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #ffffff;
+  stroke-width: 2px;
+  cursor: pointer;
 }
