@@ -66,20 +66,22 @@ export default function Sidebar() {
   return (
 
     <aside
-      className="
-        hidden
-        md:flex
+  className="
+    hidden
+    xl:flex
 
-        w-72
+    w-[280px]
+    shrink-0
 
-        h-screen
+    h-screen
 
-        sticky
-        top-0
+    sticky
+    top-0
 
-        p-6
-      "
-    >
+    p-4
+    xl:p-6
+  "
+>
 
       <div
         className="
