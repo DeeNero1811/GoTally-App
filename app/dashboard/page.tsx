@@ -648,16 +648,18 @@ export default function DashboardPage() {
               />
 
             </div>
-
+{/*
             <ProductivityChart />
 
             <ProductivityHeatmap />
 
             <ProductivityCalendar />
-
+*/}
+{/*
             <AIRecommendations />
 
             <GlobalSearch />
+            */}
 
           </div>
 
@@ -670,7 +672,7 @@ export default function DashboardPage() {
               space-y-6
             "
           >
-
+{/*
             <AIInsightsPanel />
 
             <DailySummary />
