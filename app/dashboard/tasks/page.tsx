@@ -713,8 +713,8 @@ await logActivity({
         <div
           className="
             flex
-            flex-col
-            md:flex-row
+flex-col
+xl:flex-row
             gap-3
             w-full
             xl:w-auto
@@ -893,13 +893,21 @@ await logActivity({
       >
 
         <div
-          className="
-            grid
-            grid-cols-1
-            lg:grid-cols-3
-            gap-6
-          "
-        >
+  className="
+    flex
+    gap-6
+
+    overflow-x-auto
+    overflow-y-hidden
+
+    pb-4
+
+    snap-x
+    snap-mandatory
+
+    w-full
+  "
+>
 
           {columns.map(
             (
@@ -921,13 +929,21 @@ await logActivity({
                     }
                     {...provided.droppableProps}
                     className="
-                      rounded-[32px]
-                      bg-[#f8fafc]
-                      dark:bg-[#111827]
-                      border
-                      p-5
-                      min-h-[700px]
-                    "
+  rounded-[32px]
+  bg-[#f8fafc]
+  dark:bg-[#111827]
+  border
+  p-5
+
+  min-h-[700px]
+
+  min-w-[320px]
+  w-[320px]
+
+  shrink-0
+
+  snap-start
+"
                   >
 
                     <div

@@ -1,129 +1,219 @@
 "use client"
 
+import { Bell, Search } from "lucide-react"
+
 import { useState } from "react"
 
-import { createClient } from "../../lib/supabase-client"
+export default function Navbar() {
 
-export default function ResetPasswordPage() {
-
-  const supabase = createClient()
-
-  const [email, setEmail] = useState("")
-
-  const [message, setMessage] = useState("")
-
-  const [loading, setLoading] = useState(false)
-
-  async function handleReset() {
-
-    setLoading(true)
-
-    const { error } =
-      await supabase.auth.resetPasswordForEmail(
-        email,
-        {
-          redirectTo:
-            "http://localhost:3000/update-password",
-        }
-      )
-
-    if (error) {
-      setMessage(error.message)
-      setLoading(false)
-      return
-    }
-
-    setMessage(
-      "Password reset email sent successfully"
-    )
-
-    setLoading(false)
-  }
+  const [
+    showNotifications,
+    setShowNotifications,
+  ] = useState(false)
 
   return (
-    <main className="
-      min-h-screen
-      flex
-      items-center
-      justify-center
-      bg-[var(--background)]
-      p-6
-    ">
 
-      <div className="
-        glass-card
-        w-full
-        max-w-md
-        p-8
-        space-y-6
-      ">
+    <header
+      className="
+        flex
+        items-center
+        justify-between
 
-        <div>
+        gap-4
 
-          <h1 className="
-            text-3xl
-            font-bold
-            tracking-tight
-          ">
-            Reset Password
-          </h1>
+        flex-wrap
 
-          <p className="
-            text-sm
-            text-[var(--muted)]
-            mt-2
-          ">
-            Enter your email to receive a reset link
-          </p>
+        rounded-[32px]
 
-        </div>
+        border
+
+        bg-white
+        dark:bg-[#111827]
+
+        p-4
+        md:p-6
+      "
+    >
+
+      {/* SEARCH */}
+
+      <div
+        className="
+          flex
+          items-center
+          gap-3
+
+          rounded-2xl
+
+          border
+
+          bg-[#f8fafc]
+          dark:bg-[#0f172a]
+
+          px-4
+          py-3
+
+          w-full
+          md:max-w-md
+        "
+      >
+
+        <Search size={18} />
 
         <input
-          type="email"
-          placeholder="Email address"
-          value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
+          placeholder="Search..."
           className="
+            bg-transparent
+            outline-none
             w-full
-            rounded-2xl
-            border
-            border-[var(--border)]
-            bg-[var(--card)]
-            px-4
-            py-3
           "
         />
 
+      </div>
+
+      {/* ACTIONS */}
+
+      <div
+        className="
+          flex
+          items-center
+          gap-3
+
+          ml-auto
+
+          relative
+        "
+      >
+
+        {/* NOTIFICATIONS */}
+
         <button
-          onClick={handleReset}
-          disabled={loading}
+          onClick={() =>
+            setShowNotifications(
+              !showNotifications
+            )
+          }
           className="
-            button-primary
-            w-full
+            relative
+
+            w-12
+            h-12
+
             rounded-2xl
-            py-3
-            font-medium
+
+            border
+
+            bg-[#f8fafc]
+            dark:bg-[#0f172a]
+
+            flex
+            items-center
+            justify-center
           "
         >
-          {loading
-            ? "Sending..."
-            : "Send Reset Link"}
+
+          <Bell size={20} />
+
+          <span
+            className="
+              absolute
+              top-2
+              right-2
+
+              w-2
+              h-2
+
+              rounded-full
+
+              bg-red-500
+            "
+          />
+
         </button>
 
-        {message && (
-          <p className="
-            text-sm
-            text-center
-            opacity-70
-          ">
-            {message}
-          </p>
-        )}
+        {/* NOTIFICATION PANEL */}
+
+        {
+          showNotifications && (
+
+            <div
+              className="
+                absolute
+
+                top-16
+                right-0
+
+                w-[92vw]
+                max-w-[380px]
+
+                rounded-[28px]
+
+                border
+
+                bg-white
+                dark:bg-[#111827]
+
+                shadow-2xl
+
+                p-5
+
+                z-50
+              "
+            >
+
+              <h2
+                className="
+                  text-lg
+                  font-bold
+                  mb-4
+                "
+              >
+                Notifications
+              </h2>
+
+              <div
+                className="
+                  space-y-3
+                "
+              >
+
+                <div
+                  className="
+                    rounded-2xl
+                    bg-[#f8fafc]
+                    dark:bg-[#0f172a]
+                    p-4
+                  "
+                >
+
+                  🚀 Task moved to
+                  progress
+
+                </div>
+
+                <div
+                  className="
+                    rounded-2xl
+                    bg-[#f8fafc]
+                    dark:bg-[#0f172a]
+                    p-4
+                  "
+                >
+
+                  ✅ Productivity
+                  streak updated
+
+                </div>
+
+              </div>
+
+            </div>
+
+          )
+        }
 
       </div>
 
-    </main>
+    </header>
   )
 }
