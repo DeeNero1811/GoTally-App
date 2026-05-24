@@ -37,8 +37,13 @@ import ExportReportButton from "../../components/dashboard/ExportReportButton"
 import PWAInstallButton from "../../components/pwa/PWAInstallButton"
 
 import useOnboarding from "../../hooks/useOnboarding"
-import ProductivityHeatmap from "../../components/dashboard/ProductivityHeatmap"
-import AIRecommendations from "../../components/dashboard/AIRecommendations"
+
+import ProductivityHeatmap
+  from "../../components/dashboard/ProductivityHeatmap"
+
+import AIRecommendations
+  from "../../components/dashboard/AIRecommendations"
+
 import {
   supabase,
 } from "../../lib/supabase/client"
@@ -56,7 +61,7 @@ import DailySummary
 import SmartPriorities
   from "@/components/dashboard/SmartPriorities"
 
-  import ProductivityCalendar
+import ProductivityCalendar
   from "@/components/dashboard/ProductivityCalendar"
 
 import GlobalSearch
@@ -107,8 +112,6 @@ export default function DashboardPage() {
     weeklyGrowth: 0,
   })
 
-  /* ONBOARDING */
-
   const {
     open,
     close,
@@ -119,8 +122,6 @@ export default function DashboardPage() {
     setMounted(true)
 
     loadDashboardData()
-
-    /* REALTIME */
 
     const channel =
       supabase
@@ -206,8 +207,6 @@ export default function DashboardPage() {
         return
       }
 
-      /* TASKS */
-
       const {
         data: tasks,
       } = await supabase
@@ -217,8 +216,6 @@ export default function DashboardPage() {
           "user_id",
           user.id
         )
-
-      /* HABITS */
 
       const {
         data: habits,
@@ -230,8 +227,6 @@ export default function DashboardPage() {
           user.id
         )
 
-      /* FOCUS */
-
       const {
         data: focus,
       } = await supabase
@@ -241,8 +236,6 @@ export default function DashboardPage() {
           "user_id",
           user.id
         )
-
-      /* PLANNER */
 
       const {
         data: planner,
@@ -309,8 +302,6 @@ export default function DashboardPage() {
         onClose={close}
       />
 
-      {/* PWA INSTALL */}
-
       <PWAInstallButton />
 
       <div className="space-y-8">
@@ -333,7 +324,6 @@ export default function DashboardPage() {
 
             className="
               relative
-              overflow-hidden
 
               rounded-[40px]
 
@@ -350,8 +340,10 @@ export default function DashboardPage() {
               border-white/40
               dark:border-white/10
 
-              px-6
-              py-6
+              p-5
+              md:p-8
+
+              overflow-hidden
             "
           >
 
@@ -392,7 +384,7 @@ export default function DashboardPage() {
 
               <div
                 className="
-                  px-5
+                  px-4
                   py-2
 
                   rounded-full
@@ -402,7 +394,9 @@ export default function DashboardPage() {
 
                   backdrop-blur-xl
 
-                  text-sm
+                  text-xs
+                  md:text-sm
+
                   font-medium
                 "
               >
@@ -413,103 +407,170 @@ export default function DashboardPage() {
 
             </div>
 
-            {/* HERO IMAGE */}
+            {/* HERO GRID */}
 
             <div
               className="
-                w-full
-                flex
-                justify-center
+                grid
+                grid-cols-1
+                xl:grid-cols-12
 
-                mt-10
-                mb-6
+                gap-8
+
+                items-center
+
+                mt-12
               "
             >
+
+              {/* LEFT HERO */}
 
               <div
                 className="
-                  relative
-
-                  w-full
-                  max-w-4xl
-
-                  h-[250px]
-                  md:h-[320px]
-
-                  rounded-[32px]
-
-                  overflow-hidden
-
-                  shadow-2xl
+                  xl:col-span-6
                 "
               >
 
-                <Image
-                  src="/images/gotaskly-hero.png"
-                  alt="Hero"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
+                <div
                   className="
-                    object-cover
+                    max-w-2xl
                   "
-                />
+                >
+
+                  <h2
+                    className="
+                      text-3xl
+                      md:text-5xl
+
+                      font-bold
+
+                      tracking-tight
+
+                      text-[#0f172a]
+                      dark:text-white
+
+                      mb-6
+                    "
+                  >
+
+                    AI-powered productivity platform for tasks, habits, focus, and planning
+
+                  </h2>
+
+                  <p
+                    className="
+                      text-sm
+                      md:text-lg
+
+                      leading-relaxed
+
+                      text-[#475569]
+                      dark:text-gray-300
+
+                      mb-8
+                    "
+                  >
+
+                    Analyze habits, optimize workflow, monitor productivity trends, and receive intelligent AI recommendations.
+
+                  </p>
+
+                  <div
+                    className="
+                      flex
+                      flex-wrap
+
+                      gap-4
+                    "
+                  >
+
+                    <div
+                      className="
+                        px-5
+                        py-3
+
+                        rounded-2xl
+
+                        bg-white/70
+                        dark:bg-white/10
+
+                        backdrop-blur-xl
+
+                        text-sm
+                        font-medium
+                      "
+                    >
+
+                      Productivity AI
+
+                    </div>
+
+                    <div
+                      className="
+                        px-5
+                        py-3
+
+                        rounded-2xl
+
+                        bg-white/70
+                        dark:bg-white/10
+
+                        backdrop-blur-xl
+
+                        text-sm
+                        font-medium
+                      "
+                    >
+
+                      Smart Analytics
+
+                    </div>
+
+                  </div>
+
+                </div>
 
               </div>
 
-            </div>
+              {/* RIGHT HERO */}
 
-            {/* HERO CONTENT */}
-
-            <div
-              className="
-                text-center
-
-                max-w-3xl
-
-                mx-auto
-              "
-            >
-
-              <h2
+              <div
                 className="
-                  text-2xl
-                  md:text-5xl
-
-                  font-bold
-
-                  tracking-tight
-
-                  text-[#0f172a]
-                  dark:text-white
-
-                  mb-4
+                  xl:col-span-6
                 "
               >
 
-                AI-powered productivity platform for tasks, habits, focus, and planning
+                <div
+                  className="
+                    relative
 
-              </h2>
+                    w-full
 
-              <p
-                className="
-                  text-sm
-                  md:text-lg
+                    h-[260px]
+                    md:h-[360px]
 
-                  leading-relaxed
+                    rounded-[32px]
 
-                  text-[#475569]
-                  dark:text-gray-300
+                    overflow-hidden
 
-                  max-w-2xl
+                    shadow-2xl
+                  "
+                >
 
-                  mx-auto
-                "
-              >
+                  <Image
+                    src="/images/gotaskly-hero.png"
+                    alt="Hero"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="
+                      object-cover
+                    "
+                  />
 
-                Analyze habits, optimize workflow, monitor productivity trends, and receive intelligent AI recommendations.
+                </div>
 
-              </p>
+              </div>
 
             </div>
 
@@ -517,84 +578,235 @@ export default function DashboardPage() {
 
         </section>
 
-        {/* DAILY REPORT */}
-
-        <DailyAIReport
-
-          productivity={
-            analytics.productivityScore
-          }
-
-          completedTasks={
-            analytics.completedTasks
-          }
-
-          streak={
-            analytics.bestStreak
-          }
-
-          focusSessions={
-            analytics.completedFocusSessions
-          }
-        />
-
-        {/* STATS */}
-
-        <StatsCards />
-
-        {/* EXPORT */}
+        {/* MAIN DASHBOARD GRID */}
 
         <div
           className="
-            flex
-            justify-end
+            grid
+            grid-cols-1
+            xl:grid-cols-12
+
+            gap-6
           "
         >
 
-          <ExportReportButton
+          {/* LEFT CONTENT */}
 
-            productivity={
-              analytics.productivityScore
-            }
+          <div
+            className="
+              xl:col-span-8
 
-            completedTasks={
-              analytics.completedTasks
-            }
+              space-y-6
+            "
+          >
 
-            streak={
-              analytics.bestStreak
-            }
+            <DailyAIReport
 
-            focusSessions={
-              analytics.completedFocusSessions
-            }
-          />
+              productivity={
+                analytics.productivityScore
+              }
+
+              completedTasks={
+                analytics.completedTasks
+              }
+
+              streak={
+                analytics.bestStreak
+              }
+
+              focusSessions={
+                analytics.completedFocusSessions
+              }
+            />
+
+            <StatsCards />
+
+            <div
+              className="
+                flex
+                justify-end
+              "
+            >
+
+              <ExportReportButton
+
+                productivity={
+                  analytics.productivityScore
+                }
+
+                completedTasks={
+                  analytics.completedTasks
+                }
+
+                streak={
+                  analytics.bestStreak
+                }
+
+                focusSessions={
+                  analytics.completedFocusSessions
+                }
+              />
+
+            </div>
+
+            <ProductivityChart />
+
+            <ProductivityHeatmap />
+
+            <ProductivityCalendar />
+
+            <AIRecommendations />
+
+            <GlobalSearch />
+
+          </div>
+
+          {/* RIGHT SIDEBAR */}
+
+          <div
+            className="
+              xl:col-span-4
+
+              space-y-6
+            "
+          >
+
+            <AIInsightsPanel />
+
+            <DailySummary />
+
+            <ActivityFeed />
+
+            <SmartPriorities />
+
+            {/* QUICK ANALYTICS */}
+
+            <div
+              className="
+                rounded-[32px]
+
+                border
+
+                bg-white
+                dark:bg-[#111827]
+
+                p-6
+              "
+            >
+
+              <h3
+                className="
+                  text-2xl
+                  font-bold
+
+                  mb-6
+                "
+              >
+
+                Workspace Analytics
+
+              </h3>
+
+              <div
+                className="
+                  space-y-5
+                "
+              >
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-between
+                  "
+                >
+
+                  <span>
+                    Productivity
+                  </span>
+
+                  <span
+                    className="
+                      font-bold
+                      text-xl
+                    "
+                  >
+
+                    {
+                      analytics.productivityScore
+                    }%
+
+                  </span>
+
+                </div>
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-between
+                  "
+                >
+
+                  <span>
+                    Best Streak
+                  </span>
+
+                  <span
+                    className="
+                      font-bold
+                      text-xl
+                    "
+                  >
+
+                    {
+                      analytics.bestStreak
+                    }
+
+                  </span>
+
+                </div>
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    justify-between
+                  "
+                >
+
+                  <span>
+                    Focus Sessions
+                  </span>
+
+                  <span
+                    className="
+                      font-bold
+                      text-xl
+                    "
+                  >
+
+                    {
+                      analytics.completedFocusSessions
+                    }
+
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
-
-        {/* CHARTS */}
-
-        <ProductivityChart />
-        <ProductivityHeatmap />
-        <AIRecommendations />
-
-        {/* AI INSIGHTS */}
-
-        <AIInsightsPanel />
 
         {/* AI ASSISTANT */}
 
         <div id="ai-assistant">
 
           <AIAssistant />
-          <GlobalSearch />
-          <ProductivityCalendar />
-
-          <ActivityFeed />
-
-          <DailySummary />
-
-<SmartPriorities />
 
         </div>
 

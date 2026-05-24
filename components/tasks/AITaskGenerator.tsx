@@ -75,34 +75,36 @@ AITaskGenerator() {
       if (!user)
         return
 
-      for (
-        const task
-        of tasks
-      ) {
+     for (const task of tasks) {
 
-        await supabase
-          .from("tasks")
-          .insert({
+  await supabase
+    .from("tasks")
+    .insert({
 
-            user_id:
-              user.id,
+      user_id:
+        user.id,
 
-            title:
-              task.title,
+      title:
+        task.title,
 
-            priority:
-              task.priority ||
+      priority:
+        task.priority ||
 
-              "medium",
+        "medium",
 
-            status:
-              "todo",
+      status:
+        "todo",
 
-            completed:
-              false,
-          })
-      }
+      completed:
+        false,
+    })
+}
 
+toast.success(
+  "AI tasks generated successfully."
+)
+
+window.location.reload()
       setPrompt("")
 
       alert(

@@ -540,10 +540,11 @@ export default function AIInsightsPanel() {
       <div
         className="
           grid
-          grid-cols-1
-          md:grid-cols-2
-          xl:grid-cols-4
-          gap-5
+grid-cols-1
+sm:grid-cols-2
+xl:grid-cols-3
+2xl:grid-cols-4
+gap-6
         "
       >
 
@@ -579,25 +580,24 @@ export default function AIInsightsPanel() {
                   }}
 
                   className="
-                    relative
-                    overflow-hidden
+  min-w-0
 
-                    rounded-[32px]
+  rounded-[32px]
 
-                    border
+  border
 
-                    bg-white
-                    dark:bg-[#111827]
+  bg-white
+  dark:bg-[#111827]
 
-                    p-6
+  p-6
 
-                    hover:shadow-2xl
+  hover:shadow-2xl
 
-                    transition-all
-                    duration-300
+  transition-all
+  duration-300
 
-                    hover:-translate-y-1
-                  "
+  hover:-translate-y-1
+"
                 >
 
                   <div
@@ -646,22 +646,29 @@ export default function AIInsightsPanel() {
                   </div>
 
                   <h3
-                    className="
-                      text-lg
-                      font-semibold
-                      mb-3
-                    "
+                   className="
+  text-base
+  md:text-lg
+
+  font-semibold
+
+  mb-3
+
+  break-words
+"
                   >
                     {insight.title}
                   </h3>
 
                   <p
-                    className="
-                      text-sm
-                      text-gray-500
-                      leading-relaxed
-                    "
-                  >
+  className="
+    text-sm
+    text-gray-500
+    leading-relaxed
+
+    break-words
+  "
+>
                     {
                       insight.description
                     }

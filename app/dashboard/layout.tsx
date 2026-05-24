@@ -438,7 +438,6 @@ export default function DashboardLayout({
         bg-[#f8fafc]
         dark:bg-[#020617]
         flex
-        overflow-hidden
       "
     >
 
@@ -924,7 +923,6 @@ export default function DashboardLayout({
       <main
         className="
           flex-1
-          overflow-y-auto
           p-4
           md:p-6
         "
@@ -1190,19 +1188,33 @@ export default function DashboardLayout({
                             duration: 0.2,
                           }}
                           className="
-                            absolute
-                            right-0
-                            mt-4
-                            w-[380px]
-                            rounded-[32px]
-                            border
-                            bg-white/90
-                            dark:bg-[#111827]/90
-                            backdrop-blur-2xl
-                            shadow-2xl
-                            overflow-hidden
-                            z-50
-                          "
+  fixed
+
+  top-[88px]
+
+  left-2
+  right-2
+
+  sm:left-auto
+  sm:right-6
+
+  sm:w-[380px]
+
+  rounded-[28px]
+
+  border
+
+  bg-white/95
+  dark:bg-[#111827]/95
+
+  backdrop-blur-2xl
+
+  shadow-2xl
+
+  overflow-hidden
+
+  z-[99999]
+"
                         >
 
                           <div

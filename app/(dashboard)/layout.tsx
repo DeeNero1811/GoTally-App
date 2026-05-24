@@ -7,49 +7,49 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-   <main
-  className="
-    responsive-container
-    flex
-    min-h-screen
-    bg-[var(--background)]
-    text-[var(--foreground)]
-  "
->
-
+    <main
+      className="
+        flex
+        min-h-screen
+        w-full
+        overflow-x-hidden
+        bg-[var(--background)]
+        text-[var(--foreground)]
+      "
+    >
       <Sidebar />
 
       <div
-  className="
-    flex-1
-    w-full
-  "
->
+        className="
+          flex-1
+          min-w-0
+          w-full
+          overflow-x-hidden
+        "
+      >
+        <div
+          className="
+            w-full
+            max-w-full
 
-       <div
-  className="
-    mx-auto
-    w-full
-    max-w-7xl
+            p-2
+            sm:p-3
+            md:p-4
+            lg:p-6
 
-    p-3
-    sm:p-4
-    md:p-6
-    lg:p-10
+            space-y-4
+            md:space-y-6
 
-    space-y-6
-    md:space-y-8
-
-  "
->
+            overflow-x-hidden
+          "
+        >
           <Navbar />
 
-          {children}
-
+          <div className="min-w-0 overflow-x-hidden">
+            {children}
+          </div>
         </div>
-
       </div>
-
     </main>
   )
 }

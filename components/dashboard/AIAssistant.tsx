@@ -354,34 +354,41 @@ const productivity =
                 duration: 0.25,
               }}
 
-              className="
-                fixed
-                z-[9999]
+             className="
+  fixed
+  z-[9999]
 
-                bottom-24
-                right-6
+  bottom-2
+  left-2
+  right-2
 
-                w-[92vw]
-                max-w-[380px]
+  sm:left-auto
+  sm:right-4
+  sm:bottom-4
 
-                h-[650px]
+  w-auto
+  sm:w-[400px]
 
-                rounded-[36px]
+  h-[75vh]
+  sm:h-[650px]
 
-                overflow-hidden
+  rounded-[24px]
+  sm:rounded-[36px]
 
-                bg-white/92
-                dark:bg-[#0f172a]/92
+  overflow-hidden
 
-                backdrop-blur-3xl
+  bg-white/92
+  dark:bg-[#0f172a]/92
 
-                border
-                border-white/20
+  backdrop-blur-3xl
 
-                shadow-[0_25px_80px_rgba(0,0,0,0.45)]
+  border
+  border-white/20
 
-                flex flex-col
-              "
+  shadow-[0_25px_80px_rgba(0,0,0,0.45)]
+
+  flex flex-col
+"
             >
 
               {/* GLOW */}
@@ -424,7 +431,7 @@ const productivity =
 
                   <div
                     className="
-                      w-14 h-14
+                      w-11 h-11 sm:w-14 sm:h-14
                       rounded-3xl
 
                       bg-gradient-to-br
@@ -562,7 +569,7 @@ const productivity =
                         className="
                           whitespace-nowrap
 
-                          px-4 py-2.5
+                          px-3 py-2 sm:px-4 sm:py-2.5
 
                           rounded-full
 
@@ -644,7 +651,7 @@ const productivity =
 
                             rounded-[28px]
 
-                            px-5 py-4
+                            px-3 py-3 sm:px-5 sm:py-4
 
                             whitespace-pre-line
 
@@ -777,7 +784,7 @@ const productivity =
                       bg-white/70
                       dark:bg-[#1e293b]/70
 
-                      px-5 py-4
+                      px-3 py-3 sm:px-5 sm:py-4
 
                       outline-none
 

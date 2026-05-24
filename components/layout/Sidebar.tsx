@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-
 import { usePathname } from "next/navigation"
 
 import {
@@ -66,40 +65,48 @@ export default function Sidebar() {
   return (
 
     <aside
-  className="
-    hidden
-    xl:flex
+      className="
+        hidden
+        xl:flex
 
-    w-[280px]
-    shrink-0
+        xl:w-[280px]
 
-    h-screen
+        shrink-0
 
-    sticky
-    top-0
+        min-h-screen
 
-    p-4
-    xl:p-6
-  "
->
+        sticky
+        top-0
+
+        p-2
+        sm:p-3
+        xl:p-4
+
+        overflow-hidden
+      "
+    >
 
       <div
         className="
           w-full
 
-          rounded-[32px]
+          rounded-[28px]
 
           border
 
           bg-white
           dark:bg-[#0f172a]
 
-          p-6
+          p-4
+          sm:p-5
+          xl:p-6
 
           flex
           flex-col
 
-          overflow-y-auto
+          min-w-0
+
+          overflow-hidden
         "
       >
 
@@ -107,18 +114,26 @@ export default function Sidebar() {
 
         <div
           className="
-            mb-8
+            mb-6
+            xl:mb-8
+
+            min-w-0
           "
         >
 
           <h1
             className="
-              text-2xl
+              text-xl
+              xl:text-2xl
+
               font-bold
+
+              break-words
             "
           >
 
             Productivity
+
             <span
               className="
                 text-indigo-500
@@ -132,9 +147,14 @@ export default function Sidebar() {
 
           <p
             className="
-              text-sm
+              text-xs
+              xl:text-sm
+
               text-gray-500
+
               mt-2
+
+              break-words
             "
           >
             AI Workflow Platform
@@ -149,6 +169,8 @@ export default function Sidebar() {
             flex-1
 
             space-y-2
+
+            min-w-0
           "
         >
 
@@ -171,17 +193,24 @@ export default function Sidebar() {
                     className={`
                       flex
                       items-center
+
                       gap-3
 
                       rounded-2xl
 
-                      px-4
-                      py-4
+                      px-3
+                      xl:px-4
+
+                      py-3
+                      xl:py-4
 
                       text-sm
+
                       font-medium
 
                       transition-all
+
+                      min-w-0
 
                       ${
                         active
@@ -206,10 +235,17 @@ export default function Sidebar() {
                   >
 
                     <Icon
-                      size={20}
+                      size={18}
+                      className="
+                        shrink-0
+                      "
                     />
 
-                    <span>
+                    <span
+                      className="
+                        truncate
+                      "
+                    >
                       {item.name}
                     </span>
 
@@ -227,20 +263,24 @@ export default function Sidebar() {
         <Link
           href="/dashboard/profile"
           className="
-            mt-6
+            mt-5
+            xl:mt-6
 
-            rounded-[28px]
+            rounded-[24px]
 
             bg-gradient-to-br
             from-indigo-600
             via-violet-600
             to-purple-600
 
-            p-5
+            p-4
+            xl:p-5
 
             text-white
 
             block
+
+            min-w-0
           "
         >
 
@@ -248,14 +288,21 @@ export default function Sidebar() {
             className="
               flex
               items-center
-              gap-4
+
+              gap-3
+              xl:gap-4
+
+              min-w-0
             "
           >
 
             <div
               className="
-                w-14
-                h-14
+                w-12
+                h-12
+
+                xl:w-14
+                xl:h-14
 
                 rounded-full
 
@@ -265,8 +312,12 @@ export default function Sidebar() {
                 items-center
                 justify-center
 
-                text-lg
+                text-base
+                xl:text-lg
+
                 font-bold
+
+                shrink-0
               "
             >
 
@@ -274,11 +325,20 @@ export default function Sidebar() {
 
             </div>
 
-            <div>
+            <div
+              className="
+                min-w-0
+              "
+            >
 
               <h3
                 className="
                   font-semibold
+
+                  text-sm
+                  xl:text-base
+
+                  truncate
                 "
               >
                 Alex Johnson
@@ -286,8 +346,12 @@ export default function Sidebar() {
 
               <p
                 className="
-                  text-sm
+                  text-xs
+                  xl:text-sm
+
                   text-indigo-100
+
+                  truncate
                 "
               >
                 Pro Productivity User

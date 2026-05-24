@@ -165,14 +165,10 @@ export default function FocusPage() {
       return
     }
 
-    /* ACHIEVEMENTS */
-
     await checkAchievements()
 
     loadHistory()
   }
-
-  /* AUTO TRANSITIONS */
 
   function startBreakMode() {
 
@@ -220,8 +216,6 @@ export default function FocusPage() {
     })
   }
 
-  /* TIMER */
-
   useEffect(() => {
 
     let interval: any
@@ -245,8 +239,6 @@ export default function FocusPage() {
               setIsRunning(false)
 
               saveSession()
-
-              /* AUTO FLOW */
 
               if (
                 mode === "Focus"
@@ -331,8 +323,6 @@ export default function FocusPage() {
     mode,
   ])
 
-  /* RESET */
-
   const resetTimer = () => {
 
     if (mode === "Focus") {
@@ -354,8 +344,6 @@ export default function FocusPage() {
 
     setIsRunning(false)
   }
-
-  /* MANUAL MODES */
 
   const setFocusMode = () => {
 
@@ -408,645 +396,766 @@ export default function FocusPage() {
       }}
 
       className="
+        grid
+        grid-cols-1
+        xl:grid-cols-12
+
+        gap-6
+
         min-h-[85vh]
-        flex
-        items-center
-        justify-center
       "
     >
 
+      {/* LEFT SIDE */}
+
       <div
         className="
-          w-full
-          max-w-6xl
-          rounded-[40px]
-          border
-          bg-white
-          dark:bg-[#111827]
-          p-6 md:p-10
-          shadow-2xl
+          xl:col-span-8
         "
       >
 
-        {/* TOP */}
-
         <div
           className="
-            flex
-            flex-col
-            md:flex-row
-            md:items-center
-            md:justify-between
-            gap-5
-            mb-10
+            w-full
+
+            rounded-[40px]
+
+            border
+
+            bg-white
+            dark:bg-[#111827]
+
+            p-5
+            md:p-10
+
+            shadow-2xl
           "
         >
 
-          <Link
-            href="/dashboard"
-            className="
-              flex items-center
-              gap-2
-              px-5 py-3
-              rounded-2xl
-              bg-[#f8fafc]
-              dark:bg-[#1e293b]
-              w-fit
-            "
-          >
-
-            <ArrowLeft size={18} />
-
-            Dashboard
-
-          </Link>
+          {/* TOP */}
 
           <div
             className="
-              px-5 py-3
-              rounded-2xl
-              bg-indigo-100
-              dark:bg-[#1e293b]
-              text-indigo-600
-              dark:text-indigo-300
-              font-medium
-              w-fit
+              flex
+              flex-col
+              md:flex-row
+
+              md:items-center
+              md:justify-between
+
+              gap-5
+              mb-10
             "
           >
 
-            {mode} Mode
+            <Link
+              href="/dashboard"
+              className="
+                flex items-center
+                gap-2
+
+                px-5 py-3
+
+                rounded-2xl
+
+                bg-[#f8fafc]
+                dark:bg-[#1e293b]
+
+                w-fit
+              "
+            >
+
+              <ArrowLeft size={18} />
+
+              Dashboard
+
+            </Link>
+
+            <div
+              className="
+                px-5 py-3
+
+                rounded-2xl
+
+                bg-indigo-100
+                dark:bg-[#1e293b]
+
+                text-indigo-600
+                dark:text-indigo-300
+
+                font-medium
+
+                w-fit
+              "
+            >
+
+              {mode} Mode
+
+            </div>
 
           </div>
 
-        </div>
-
-        {/* HEADER */}
-
-        <div
-          className="
-            text-center
-            mb-12
-          "
-        >
+          {/* HEADER */}
 
           <div
             className="
-              w-28 h-28
-              rounded-full
-              bg-[#eef2ff]
-              dark:bg-[#1e293b]
-              flex items-center
-              justify-center
-              mx-auto
-              mb-8
-            "
-          >
-
-            <Timer
-              size={48}
-              className="
-                text-indigo-500
-              "
-            />
-
-          </div>
-
-          <h1
-            className="
-              text-4xl
-              md:text-6xl
-              font-bold
-              mb-4
-            "
-          >
-
-            Focus Mode
-
-          </h1>
-
-          <p
-            className="
-              text-gray-500
-              text-base
-              md:text-lg
-            "
-          >
-
-            Stay productive with timed focus sessions
-
-          </p>
-
-        </div>
-
-        {/* MODES */}
-
-        <div
-          className="
-            grid
-            grid-cols-1
-            md:grid-cols-3
-            gap-4
-            mb-12
-          "
-        >
-
-          <button
-            onClick={setFocusMode}
-            className={`
-              rounded-3xl
-              border
-              p-5
-              text-left
-              transition-all
-
-              ${
-                mode === "Focus"
-                  ? `
-                    bg-indigo-500
-                    text-white
-                    border-indigo-500
-                  `
-                  : `
-                    bg-[#f8fafc]
-                    dark:bg-[#1e293b]
-                  `
-              }
-            `}
-          >
-
-            <Brain
-              size={32}
-              className="mb-4"
-            />
-
-            <h2
-              className="
-                text-xl
-                font-semibold
-                mb-2
-              "
-            >
-
-              Focus
-
-            </h2>
-
-            <p
-              className="
-                text-sm
-                opacity-80
-              "
-            >
-
-              25 minute productivity sprint
-
-            </p>
-
-          </button>
-
-          <button
-            onClick={setBreakMode}
-            className={`
-              rounded-3xl
-              border
-              p-5
-              text-left
-              transition-all
-
-              ${
-                mode === "Break"
-                  ? `
-                    bg-green-500
-                    text-white
-                    border-green-500
-                  `
-                  : `
-                    bg-[#f8fafc]
-                    dark:bg-[#1e293b]
-                  `
-              }
-            `}
-          >
-
-            <Coffee
-              size={32}
-              className="mb-4"
-            />
-
-            <h2
-              className="
-                text-xl
-                font-semibold
-                mb-2
-              "
-            >
-
-              Break
-
-            </h2>
-
-            <p
-              className="
-                text-sm
-                opacity-80
-              "
-            >
-
-              5 minute recharge break
-
-            </p>
-
-          </button>
-
-          <button
-            onClick={setDeepWorkMode}
-            className={`
-              rounded-3xl
-              border
-              p-5
-              text-left
-              transition-all
-
-              ${
-                mode === "Deep Work"
-                  ? `
-                    bg-orange-500
-                    text-white
-                    border-orange-500
-                  `
-                  : `
-                    bg-[#f8fafc]
-                    dark:bg-[#1e293b]
-                  `
-              }
-            `}
-          >
-
-            <Zap
-              size={32}
-              className="mb-4"
-            />
-
-            <h2
-              className="
-                text-xl
-                font-semibold
-                mb-2
-              "
-            >
-
-              Deep Work
-
-            </h2>
-
-            <p
-              className="
-                text-sm
-                opacity-80
-              "
-            >
-
-              50 minute intense session
-
-            </p>
-
-          </button>
-
-        </div>
-
-        {/* TIMER */}
-
-        <motion.div
-
-          key={`${minutes}:${seconds}`}
-
-          initial={{
-            scale: 0.95,
-          }}
-
-          animate={{
-            scale: 1,
-          }}
-
-          className="
-            text-center
-            mb-14
-          "
-        >
-
-          <div
-            className="
-              text-[80px]
-              md:text-[140px]
-              font-bold
-              leading-none
-              tracking-tight
-            "
-          >
-
-            {String(minutes).padStart(2, "0")}
-            :
-            {String(seconds).padStart(2, "0")}
-
-          </div>
-
-        </motion.div>
-
-        {/* CONTROLS */}
-
-        <div
-          className="
-            flex items-center
-            justify-center
-            gap-5
-            mb-14
-          "
-        >
-
-          <button
-            onClick={() =>
-              setIsRunning(
-                !isRunning
-              )
-            }
-            className="
-              w-20 h-20
-              rounded-full
-              bg-gradient-to-r
-              from-[#4f46e5]
-              to-[#6366f1]
-              text-white
-              flex items-center
-              justify-center
-              shadow-xl
-              hover:scale-105
-              transition-all
-            "
-          >
-
-            {
-              isRunning
-                ? (
-                  <Pause size={34} />
-                )
-                : (
-                  <Play size={34} />
-                )
-            }
-
-          </button>
-
-          <button
-            onClick={resetTimer}
-            className="
-              w-20 h-20
-              rounded-full
-              bg-[#f8fafc]
-              dark:bg-[#1e293b]
-              flex items-center
-              justify-center
-              border
-              hover:scale-105
-              transition-all
-            "
-          >
-
-            <RotateCcw size={30} />
-
-          </button>
-
-        </div>
-
-        {/* AMBIENT */}
-
-        <div className="mb-10">
-
-          <AmbientSounds />
-
-        </div>
-
-        {/* STATS */}
-
-        <div
-          className="
-            grid
-            grid-cols-1
-            md:grid-cols-2
-            gap-6
-          "
-        >
-
-          {/* HISTORY */}
-
-          <div
-            className="
-              rounded-[32px]
-              border
-              bg-[#f8fafc]
-              dark:bg-[#1e293b]
-              p-6
+              text-center
+              mb-12
             "
           >
 
             <div
               className="
-                flex
-                items-center
-                gap-3
-                mb-6
+                w-24 h-24
+                md:w-28 md:h-28
+
+                rounded-full
+
+                bg-[#eef2ff]
+                dark:bg-[#1e293b]
+
+                flex items-center
+                justify-center
+
+                mx-auto
+                mb-8
               "
             >
 
-              <History
+              <Timer
+                size={44}
                 className="
                   text-indigo-500
                 "
               />
 
-              <h2
-                className="
-                  text-2xl
-                  font-bold
-                "
-              >
-
-                Session History
-
-              </h2>
-
             </div>
 
-            <div className="space-y-4">
-
-              {history.length === 0 ? (
-
-                <p
-                  className="
-                    text-gray-500
-                  "
-                >
-
-                  No sessions completed yet.
-
-                </p>
-
-              ) : (
-
-                history.map(
-                  (session) => (
-
-                    <div
-
-                      key={session.id}
-
-                      className="
-                        flex
-                        items-center
-                        justify-between
-
-                        rounded-2xl
-
-                        bg-white
-                        dark:bg-[#111827]
-
-                        px-4
-                        py-3
-                      "
-                    >
-
-                      <div>
-
-                        <p
-                          className="
-                            font-semibold
-                          "
-                        >
-
-                          {session.mode}
-
-                        </p>
-
-                        <p
-                          className="
-                            text-sm
-                            text-gray-500
-                          "
-                        >
-
-                          {session.duration}
-                          min session
-
-                        </p>
-
-                      </div>
-
-                      <div
-                        className="
-                          text-sm
-                          text-gray-400
-                        "
-                      >
-
-                        {
-                          new Date(
-                            session.completed_at
-                          ).toLocaleDateString()
-                        }
-
-                      </div>
-
-                    </div>
-
-                  )
-                )
-
-              )}
-
-            </div>
-
-          </div>
-
-          {/* SUMMARY */}
-
-          <div
-            className="
-              rounded-[32px]
-              border
-              bg-[#f8fafc]
-              dark:bg-[#1e293b]
-              p-6
-            "
-          >
-
-            <h2
+            <h1
               className="
-                text-3xl
+                text-4xl
+                md:text-6xl
+
                 font-bold
+
                 mb-4
               "
             >
 
-              Productivity Summary
+              Focus Mode
+
+            </h1>
+
+            <p
+              className="
+                text-gray-500
+                text-base
+                md:text-lg
+              "
+            >
+
+              Stay productive with timed focus sessions
+
+            </p>
+
+          </div>
+
+          {/* MODES */}
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              md:grid-cols-3
+
+              gap-4
+              mb-12
+            "
+          >
+
+            <button
+              onClick={setFocusMode}
+              className={`
+                rounded-3xl
+                border
+                p-5
+                text-left
+                transition-all
+
+                ${
+                  mode === "Focus"
+                    ? `
+                      bg-indigo-500
+                      text-white
+                      border-indigo-500
+                    `
+                    : `
+                      bg-[#f8fafc]
+                      dark:bg-[#1e293b]
+                    `
+                }
+              `}
+            >
+
+              <Brain
+                size={32}
+                className="mb-4"
+              />
+
+              <h2
+                className="
+                  text-xl
+                  font-semibold
+                  mb-2
+                "
+              >
+
+                Focus
+
+              </h2>
+
+              <p
+                className="
+                  text-sm
+                  opacity-80
+                "
+              >
+
+                25 minute productivity sprint
+
+              </p>
+
+            </button>
+
+            <button
+              onClick={setBreakMode}
+              className={`
+                rounded-3xl
+                border
+                p-5
+                text-left
+                transition-all
+
+                ${
+                  mode === "Break"
+                    ? `
+                      bg-green-500
+                      text-white
+                      border-green-500
+                    `
+                    : `
+                      bg-[#f8fafc]
+                      dark:bg-[#1e293b]
+                    `
+                }
+              `}
+            >
+
+              <Coffee
+                size={32}
+                className="mb-4"
+              />
+
+              <h2
+                className="
+                  text-xl
+                  font-semibold
+                  mb-2
+                "
+              >
+
+                Break
+
+              </h2>
+
+              <p
+                className="
+                  text-sm
+                  opacity-80
+                "
+              >
+
+                5 minute recharge break
+
+              </p>
+
+            </button>
+
+            <button
+              onClick={setDeepWorkMode}
+              className={`
+                rounded-3xl
+                border
+                p-5
+                text-left
+                transition-all
+
+                ${
+                  mode === "Deep Work"
+                    ? `
+                      bg-orange-500
+                      text-white
+                      border-orange-500
+                    `
+                    : `
+                      bg-[#f8fafc]
+                      dark:bg-[#1e293b]
+                    `
+                }
+              `}
+            >
+
+              <Zap
+                size={32}
+                className="mb-4"
+              />
+
+              <h2
+                className="
+                  text-xl
+                  font-semibold
+                  mb-2
+                "
+              >
+
+                Deep Work
+
+              </h2>
+
+              <p
+                className="
+                  text-sm
+                  opacity-80
+                "
+              >
+
+                50 minute intense session
+
+              </p>
+
+            </button>
+
+          </div>
+
+          {/* TIMER */}
+
+          <motion.div
+
+            key={`${minutes}:${seconds}`}
+
+            initial={{
+              scale: 0.95,
+            }}
+
+            animate={{
+              scale: 1,
+            }}
+
+            className="
+              text-center
+              mb-14
+            "
+          >
+
+            <div
+              className="
+                text-[70px]
+                md:text-[140px]
+
+                font-bold
+
+                leading-none
+                tracking-tight
+              "
+            >
+
+              {String(minutes).padStart(2, "0")}
+              :
+              {String(seconds).padStart(2, "0")}
+
+            </div>
+
+          </motion.div>
+
+          {/* CONTROLS */}
+
+          <div
+            className="
+              flex items-center
+              justify-center
+
+              gap-5
+              mb-14
+            "
+          >
+
+            <button
+              onClick={() =>
+                setIsRunning(
+                  !isRunning
+                )
+              }
+              className="
+                w-16 h-16
+                md:w-20 md:h-20
+
+                rounded-full
+
+                bg-gradient-to-r
+                from-[#4f46e5]
+                to-[#6366f1]
+
+                text-white
+
+                flex items-center
+                justify-center
+
+                shadow-xl
+
+                hover:scale-105
+
+                transition-all
+              "
+            >
+
+              {
+                isRunning
+                  ? (
+                    <Pause size={30} />
+                  )
+                  : (
+                    <Play size={30} />
+                  )
+              }
+
+            </button>
+
+            <button
+              onClick={resetTimer}
+              className="
+                w-16 h-16
+                md:w-20 md:h-20
+
+                rounded-full
+
+                bg-[#f8fafc]
+                dark:bg-[#1e293b]
+
+                flex items-center
+                justify-center
+
+                border
+
+                hover:scale-105
+
+                transition-all
+              "
+            >
+
+              <RotateCcw size={28} />
+
+            </button>
+
+          </div>
+
+          {/* AMBIENT */}
+
+          <div>
+
+            <AmbientSounds />
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* RIGHT SIDEBAR */}
+
+      <div
+        className="
+          xl:col-span-4
+
+          space-y-6
+        "
+      >
+
+        {/* HISTORY */}
+
+        <div
+          className="
+            rounded-[32px]
+
+            border
+
+            bg-[#f8fafc]
+            dark:bg-[#1e293b]
+
+            p-6
+          "
+        >
+
+          <div
+            className="
+              flex
+              items-center
+              gap-3
+
+              mb-6
+            "
+          >
+
+            <History
+              className="
+                text-indigo-500
+              "
+            />
+
+            <h2
+              className="
+                text-2xl
+                font-bold
+              "
+            >
+
+              Session History
 
             </h2>
 
-            <div className="space-y-4">
+          </div>
 
-              <div
+          <div className="space-y-4">
+
+            {history.length === 0 ? (
+
+              <p
                 className="
-                  flex
-                  items-center
-                  justify-between
+                  text-gray-500
                 "
               >
 
-                <span>Total Sessions</span>
+                No sessions completed yet.
 
-                <span
-                  className="
-                    font-bold
-                  "
-                >
+              </p>
 
-                  {sessions}
+            ) : (
 
-                </span>
+              history.map(
+                (session) => (
 
-              </div>
+                  <div
 
-              <div
+                    key={session.id}
+
+                    className="
+                      flex
+                      items-center
+                      justify-between
+
+                      rounded-2xl
+
+                      bg-white
+                      dark:bg-[#111827]
+
+                      px-4
+                      py-3
+                    "
+                  >
+
+                    <div>
+
+                      <p
+                        className="
+                          font-semibold
+                        "
+                      >
+
+                        {session.mode}
+
+                      </p>
+
+                      <p
+                        className="
+                          text-sm
+                          text-gray-500
+                        "
+                      >
+
+                        {session.duration}
+                        min session
+
+                      </p>
+
+                    </div>
+
+                    <div
+                      className="
+                        text-sm
+                        text-gray-400
+                      "
+                    >
+
+                      {
+                        new Date(
+                          session.completed_at
+                        ).toLocaleDateString()
+                      }
+
+                    </div>
+
+                  </div>
+
+                )
+              )
+
+            )}
+
+          </div>
+
+        </div>
+
+        {/* SUMMARY */}
+
+        <div
+          className="
+            rounded-[32px]
+
+            border
+
+            bg-white
+            dark:bg-[#111827]
+
+            p-6
+          "
+        >
+
+          <h2
+            className="
+              text-3xl
+              font-bold
+
+              mb-6
+            "
+          >
+
+            Productivity Summary
+
+          </h2>
+
+          <div className="space-y-5">
+
+            <div
+              className="
+                flex
+                items-center
+                justify-between
+              "
+            >
+
+              <span>
+                Total Sessions
+              </span>
+
+              <span
                 className="
-                  flex
-                  items-center
-                  justify-between
+                  font-bold
+                  text-xl
                 "
               >
 
-                <span>Total Focus Time</span>
+                {sessions}
 
-                <span
-                  className="
-                    font-bold
-                  "
-                >
+              </span>
 
-                  {history.reduce(
-                    (
-                      total,
-                      item
-                    ) =>
-                      total +
-                      item.duration,
-                    0
-                  )}m
+            </div>
 
-                </span>
+            <div
+              className="
+                flex
+                items-center
+                justify-between
+              "
+            >
 
-              </div>
+              <span>
+                Total Focus Time
+              </span>
+
+              <span
+                className="
+                  font-bold
+                  text-xl
+                "
+              >
+
+                {history.reduce(
+                  (
+                    total,
+                    item
+                  ) =>
+                    total +
+                    item.duration,
+                  0
+                )}m
+
+              </span>
 
             </div>
 
           </div>
+
+        </div>
+
+        {/* AI INSIGHT */}
+
+        <div
+          className="
+            rounded-[32px]
+
+            border
+
+            bg-gradient-to-br
+            from-indigo-600
+            via-violet-600
+            to-purple-600
+
+            p-6
+
+            text-white
+          "
+        >
+
+          <h2
+            className="
+              text-2xl
+              font-bold
+
+              mb-4
+            "
+          >
+
+            AI Focus Insight
+
+          </h2>
+
+          <p
+            className="
+              text-sm
+              leading-relaxed
+
+              text-indigo-100
+            "
+          >
+
+            {
+              sessions >= 10
+
+                ? "Your focus consistency is excellent. Deep work sessions are improving productivity."
+
+                : "Try completing more focus sessions daily to improve concentration endurance."
+            }
+
+          </p>
 
         </div>
 

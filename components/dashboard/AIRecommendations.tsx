@@ -349,15 +349,17 @@ export default function AIRecommendations() {
                 }}
 
                 className="
-                  rounded-3xl
+  min-w-0
 
-                  border
+  rounded-3xl
 
-                  bg-[#f8fafc]
-                  dark:bg-[#1e293b]
+  border
 
-                  p-5
-                "
+  bg-[#f8fafc]
+  dark:bg-[#1e293b]
+
+  p-5
+"
               >
 
                 <div

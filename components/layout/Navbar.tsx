@@ -1,8 +1,13 @@
 "use client"
 
-import { Bell, Search } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
-import { useState } from "react"
+import {
+  Bell,
+  Moon,
+  Search,
+  Menu,
+} from "lucide-react"
 
 export default function Navbar() {
 
@@ -11,95 +16,91 @@ export default function Navbar() {
     setShowNotifications,
   ] = useState(false)
 
+  const notificationRef =
+    useRef<HTMLDivElement | null>(
+      null
+    )
+
+  // CLOSE WHEN CLICKING OUTSIDE
+
+  useEffect(() => {
+
+    function handleClickOutside(
+      event: MouseEvent
+    ) {
+
+      if (
+        notificationRef.current &&
+        !notificationRef.current.contains(
+          event.target as Node
+        )
+      ) {
+
+        setShowNotifications(false)
+
+      }
+    }
+
+    document.addEventListener(
+      "mousedown",
+      handleClickOutside
+    )
+
+    return () => {
+
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside
+      )
+
+    }
+
+  }, [])
+
   return (
 
     <header
       className="
-        flex
-        items-center
-        justify-between
+        relative
 
-        gap-4
+        w-full
+        min-w-0
 
-        flex-wrap
-
-        rounded-[32px]
+        rounded-[24px]
 
         border
 
         bg-white
         dark:bg-[#111827]
 
-        p-4
-        md:p-6
+        p-2
+        sm:p-3
+        md:p-4
+
+        overflow-visible
       "
     >
-
-      {/* SEARCH */}
 
       <div
         className="
           flex
           items-center
-          gap-3
 
-          rounded-2xl
-
-          border
-
-          bg-[#f8fafc]
-          dark:bg-[#0f172a]
-
-          px-4
-          py-3
+          gap-2
 
           w-full
-          md:max-w-md
+          min-w-0
         "
       >
 
-        <Search size={18} />
-
-        <input
-          placeholder="Search..."
-          className="
-            bg-transparent
-            outline-none
-            w-full
-          "
-        />
-
-      </div>
-
-     {/* ACTIONS */}
-
-<div
-  className="
-    flex
-    items-center
-    gap-3
-
-    ml-auto
-
-    relative
-
-    overflow-visible
-  "
->
-
-        {/* NOTIFICATIONS */}
+        {/* MENU */}
 
         <button
-          onClick={() =>
-            setShowNotifications(
-              !showNotifications
-            )
-          }
           className="
-            relative
+            shrink-0
 
-            w-12
-            h-12
+            w-10
+            h-10
 
             rounded-2xl
 
@@ -114,109 +115,263 @@ export default function Navbar() {
           "
         >
 
-          <Bell size={20} />
-
-          <span
-            className="
-              absolute
-              top-2
-              right-2
-
-              w-2
-              h-2
-
-              rounded-full
-
-              bg-red-500
-            "
-          />
+          <Menu size={18} />
 
         </button>
 
-        {/* NOTIFICATION PANEL */}
+        {/* SEARCH */}
 
-        {
-          showNotifications && (
+        <div
+          className="
+            flex
+            items-center
 
-            <div
-   className="
-  fixed
+            gap-2
 
-  top-[88px]
+            flex-1
+            min-w-0
 
-  left-1/2
-  -translate-x-1/2
+            rounded-2xl
 
-  w-[94vw]
-  max-w-[360px]
+            border
 
-  overflow-hidden
+            bg-[#f8fafc]
+            dark:bg-[#0f172a]
 
-  rounded-[28px]
+            px-3
+            py-2.5
+          "
+        >
 
-  border
+          <Search
+            size={16}
+            className="
+              shrink-0
+            "
+          />
 
-  bg-white
-  dark:bg-[#111827]
+          <input
+            placeholder="Search tasks..."
+            className="
+              w-full
+              min-w-0
 
-  shadow-[0_20px_80px_rgba(0,0,0,0.35)]
+              bg-transparent
+              outline-none
 
-  p-5
+              text-xs
+              sm:text-sm
+            "
+          />
 
-  z-[99999]
-"
-            >
+        </div>
 
-              <h2
-                className="
-                  text-lg
-                  font-bold
-                  mb-4
-                "
-              >
-                Notifications
-              </h2>
+        {/* NOTIFICATIONS */}
 
-              <div
-                className="
-                  space-y-3
-                "
-              >
+        <div
+          className="
+            relative
+            shrink-0
+          "
+          ref={notificationRef}
+        >
 
-                <div
-                  className="
-                    rounded-2xl
-                    bg-[#f8fafc]
-                    dark:bg-[#0f172a]
-                    p-4
-                  "
-                >
+          <button
+            onClick={() =>
+              setShowNotifications(
+                !showNotifications
+              )
+            }
+            className="
+              relative
 
-                  🚀 Task moved to
-                  progress
+              w-10
+              h-10
 
-                </div>
+              rounded-2xl
 
-                <div
-                  className="
-                    rounded-2xl
-                    bg-[#f8fafc]
-                    dark:bg-[#0f172a]
-                    p-4
-                  "
-                >
+              border
 
-                  ✅ Productivity
-                  streak updated
+              bg-[#f8fafc]
+              dark:bg-[#0f172a]
 
-                </div>
+              flex
+              items-center
+              justify-center
+            "
+          >
 
-              </div>
+            <Bell size={18} />
 
-            </div>
+            <span
+              className="
+                absolute
 
-          )
-        }
+                top-2
+                right-2
+
+                w-2
+                h-2
+
+                rounded-full
+
+                bg-red-500
+              "
+            />
+
+          </button>
+{/* NOTIFICATION PANEL */}
+
+{
+  showNotifications && (
+
+    <div
+      className="
+        fixed
+
+        top-[72px]
+
+        inset-x-2
+        sm:inset-x-auto
+
+        sm:right-4
+
+        sm:w-[340px]
+
+        rounded-[20px]
+
+        border
+
+        bg-white
+        dark:bg-[#111827]
+
+        p-2
+        sm:p-4
+
+        shadow-2xl
+
+        z-[9999]
+
+        overflow-hidden
+      "
+    >
+
+      <div
+        className="
+          flex
+          items-center
+          justify-between
+
+          gap-2
+
+          mb-3
+        "
+      >
+
+        <h2
+          className="
+            text-sm
+            font-bold
+
+            truncate
+          "
+        >
+          Notifications
+        </h2>
+
+        <button
+          className="
+            shrink-0
+
+            text-xs
+            text-indigo-600
+          "
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <div
+        className="
+          space-y-2
+        "
+      >
+
+        <div
+          className="
+            rounded-2xl
+
+            bg-[#f8fafc]
+            dark:bg-[#0f172a]
+
+            p-2.5
+            sm:p-3
+
+            text-sm
+
+            break-words
+          "
+        >
+
+          🚀 Task moved to progress
+
+        </div>
+
+        <div
+          className="
+            rounded-2xl
+
+            bg-[#f8fafc]
+            dark:bg-[#0f172a]
+
+            p-2.5
+            sm:p-3
+
+            text-sm
+
+            break-words
+          "
+        >
+
+          ✅ Productivity streak updated
+
+        </div>
+
+      </div>
+
+    </div>
+
+  )
+}
+
+        </div>
+
+        {/* THEME */}
+
+        <button
+          className="
+            shrink-0
+
+            w-10
+            h-10
+
+            rounded-2xl
+
+            border
+
+            bg-[#f8fafc]
+            dark:bg-[#0f172a]
+
+            flex
+            items-center
+            justify-center
+          "
+        >
+
+          <Moon size={18} />
+
+        </button>
 
       </div>
 
