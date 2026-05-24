@@ -319,31 +319,34 @@ export default function TasksPage() {
     return
 
   const isCompleted =
+  status === "completed"
 
-    status === "completed" ||
+const {
+  error,
+} = await supabase
+  .from("tasks")
+  .update({
 
-    status === "complete" ||
+    status,
 
-    status === "done"
+    completed:
+      isCompleted,
 
-  await supabase
-    .from("tasks")
-    .update({
+  })
+  .eq(
+    "id",
+    taskId
+  )
 
-      status,
+if (error) {
 
-      completed:
-        isCompleted,
+  console.error(
+    "TASK UPDATE ERROR:",
+    error
+  )
 
-      updated_at:
-        new Date()
-          .toISOString(),
-    })
-    .eq(
-      "id",
-      taskId
-    )
-
+  return
+}
   if (
     status ===
     "progress"

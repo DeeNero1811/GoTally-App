@@ -71,19 +71,21 @@ export default function Navbar() {
 
       </div>
 
-      {/* ACTIONS */}
+     {/* ACTIONS */}
 
-      <div
-        className="
-          flex
-          items-center
-          gap-3
+<div
+  className="
+    flex
+    items-center
+    gap-3
 
-          ml-auto
+    ml-auto
 
-          relative
-        "
-      >
+    relative
+
+    overflow-visible
+  "
+>
 
         {/* NOTIFICATIONS */}
 
@@ -137,28 +139,32 @@ export default function Navbar() {
           showNotifications && (
 
             <div
-              className="
-                absolute
+   className="
+  fixed
 
-                top-16
-                right-0
+  top-[88px]
 
-                w-[92vw]
-                max-w-[380px]
+  left-1/2
+  -translate-x-1/2
 
-                rounded-[28px]
+  w-[94vw]
+  max-w-[360px]
 
-                border
+  overflow-hidden
 
-                bg-white
-                dark:bg-[#111827]
+  rounded-[28px]
 
-                shadow-2xl
+  border
 
-                p-5
+  bg-white
+  dark:bg-[#111827]
 
-                z-50
-              "
+  shadow-[0_20px_80px_rgba(0,0,0,0.35)]
+
+  p-5
+
+  z-[99999]
+"
             >
 
               <h2

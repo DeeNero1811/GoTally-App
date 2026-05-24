@@ -12,7 +12,6 @@ export default function DashboardLayout({
     responsive-container
     flex
     min-h-screen
-    overflow-x-hidden
     bg-[var(--background)]
     text-[var(--foreground)]
   "
@@ -23,7 +22,6 @@ export default function DashboardLayout({
       <div
   className="
     flex-1
-    overflow-x-hidden
     w-full
   "
 >
@@ -42,7 +40,6 @@ export default function DashboardLayout({
     space-y-6
     md:space-y-8
 
-    overflow-x-hidden
   "
 >
           <Navbar />

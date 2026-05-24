@@ -40,8 +40,8 @@ AITaskGenerator() {
     try {
 
       const response =
-        await fetch(
-          "/api/generate-tasks",
+  await fetch(
+    "/api/chat/generate-tasks",
           {
             method: "POST",
 
